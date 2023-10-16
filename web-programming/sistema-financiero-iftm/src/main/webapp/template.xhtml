@@ -11,20 +11,20 @@
     <h:body>
         <header>
             <p:menubar>
-                <p:menuitem url="index.xhtml" class="item-logo">
+                <p:menuitem url="#{request.contextPath}/index.xhtml" class="item-logo">
                     <h:graphicImage class="logo" library="sistema-financeiro-iftm" name="imagens/logo.png"></h:graphicImage>
                 </p:menuitem>
                 
-                <p:menuitem url="dashboard/index.xhtml" value="Dashboard"></p:menuitem>
-                <p:menuitem url="cadastro/cadastro-produto.xhtml" value="Cadastrar Produto"></p:menuitem>
-                <p:menuitem url="sobre.xhtml" value="Sobre"></p:menuitem>                
+                <p:menuitem url="#{request.contextPath}/dashboard/index.xhtml" value="Dashboard"></p:menuitem>
+                <p:menuitem url="#{request.contextPath}/cadastros/cadastro-produto.xhtml" value="Cadastrar Produto"></p:menuitem>
+                <p:menuitem url="#{request.contextPath}/sobre.xhtml" value="Sobre"></p:menuitem>
             </p:menubar> 
         </header>
         <main class="container_content">
             <ui:insert></ui:insert>
         </main>
         <footer>
-            IFTM - 2023 - Opensource Project
+            <p>&copy; 2023 AGF - Software de Gerenciamento Financeiro. Todos os direitos reservados.</p>
         </footer>
     </h:body>
 </html>

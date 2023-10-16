@@ -7,19 +7,22 @@
       xmlns:p="http://primefaces.org/ui">
     
     <div>
-        <h3>Cadastro de usuários</h3>
+        <h3>
+            <i class="pi pi-pencil" style="font-size: 1rem; margin-right: 2px"></i>
+            Cadastro de usuários
+        </h3>
         
         <p:toolbar>
-            <p:toolbarGroup align="left">
-                <p:commandButton type="button" value="Novo" icon="pi pi-file" styleClass="mr-2" />
+            <p:toolbarGroup>
+                 <p:commandButton type="button" value="Novo" icon="pi pi-file" styleClass="mr-2" />
                 <p:commandButton type="button" value="Salvar" icon="pi pi-save" styleClass="mr-2" />
-                <p:commandButton type="button" value="Pesquisar" icon="pi pi-search" styleClass="mr-2" />
+                <p:commandButton type="button" value="Pesquisar" icon="pi pi-search" />
             </p:toolbarGroup>
         </p:toolbar>
         
         <h:form>
+            
             <p:panelGrid columns="2" layout="tabular">
-                
                 <p:outputLabel for="lastname1" value="Nome"/>
                 <p:inputText id="lastname1"/>
 
