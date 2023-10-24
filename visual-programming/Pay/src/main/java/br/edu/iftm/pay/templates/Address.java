@@ -1,6 +1,6 @@
 package br.edu.iftm.pay.templates;
 
-enum TipoEndereco {
+enum AddressType {
     RESIDENCIAL,
     COMERCIAL,
     ENTREGA
@@ -11,54 +11,54 @@ enum TipoEndereco {
  * @author dc7devs
  */
 public class Address {
-    private String estado;
-    private String cidade;
-    private String logradouro;
+    private String state;
+    private String city;
+    private String publicPlace;
     private String cep;
-    private String numero;
-    private String complemento;
-    private TipoEndereco tipoEndereco;
+    private String number;
+    private String complement;
+    private AddressType addressType;
     
-    public Address(String estado, String cidade, String logradouro, String cep, String numero, String complemento, TipoEndereco tipoEndereco) {
-        this.estado = estado;
-        this.cidade = cidade;
-        this.logradouro = logradouro;
+    public Address(String state, String city, String publicPlace, String cep, String number, String complemento, AddressType addressType) {
+        this.state = state;
+        this.city = city;
+        this.publicPlace = publicPlace;
         this.cep = cep;
-        this.numero = numero;
-        this.tipoEndereco = tipoEndereco;
-        this.complemento = complemento;
+        this.number = number;
+        this.addressType = addressType;
+        this.complement = complemento;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCity() {
+        return city;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getNumber() {
+        return number;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setPublicPlace(String publicPlace) {
+        this.publicPlace = publicPlace;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getPublicPlace() {
+        return publicPlace;
     }
 
     public void setCep(String cep) {
@@ -69,19 +69,19 @@ public class Address {
         return cep;
     }
     
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setComplement(String complement) {
+        this.complement = complement;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getComplement() {
+        return complement;
     }
 
-    public void setTipoEndereco(TipoEndereco tipoEndereco) {
-        this.tipoEndereco = tipoEndereco;
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
     }
 
-    public TipoEndereco getTipoEndereco() {
-        return tipoEndereco;
+    public AddressType getAddressType() {
+        return addressType;
     }
 }

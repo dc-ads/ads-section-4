@@ -11,69 +11,69 @@ import java.util.Objects;
  * @author dc7devs
  */
 public class Customer {
-    private static Integer contadorClientes = 1;
+    private static Integer customerCounter = 1;
     private Integer id;
-    private String nome;
-    private String CpfOuCnpj;
-    private List<Address> telefones;
-    private EntityType tipoCliente;
-    private RegistrationStatus situacaoCadastral;
+    private String name;
+    private String cpfOrCnpj;
+    private List<Address> phones;
+    private EntityType customerType;
+    private RegistrationStatus registrationStatus;
     
-    public Customer(Integer id, String nome, String CpfOuCnpj, ArrayList<Address> telefones, EntityType tipoCliente, RegistrationStatus situacaoCadastral) {
-        this.id = contadorClientes++;
-        this.nome = nome;
-        this.CpfOuCnpj = CpfOuCnpj;
-        this.situacaoCadastral = situacaoCadastral;
-        this.tipoCliente = tipoCliente;
-        this.telefones = telefones;
+    public Customer(Integer id, String name, String cpfOrCnpj, ArrayList<Address> phones, EntityType customerType, RegistrationStatus registrationStatus) {
+        this.id = customerCounter++;
+        this.name = name;
+        this.cpfOrCnpj = cpfOrCnpj;
+        this.registrationStatus = registrationStatus;
+        this.customerType = customerType;
+        this.phones = phones;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setCpfOuCnpj(String CpfOuCnpj) {
-        this.CpfOuCnpj = CpfOuCnpj;
+    public void setCpfOrCnpj(String cpfOrCnpj) {
+        this.cpfOrCnpj = cpfOrCnpj;
     }
 
-    public String getCpfOuCnpj() {
-        return CpfOuCnpj;
+    public String getCpfOrCnpj() {
+        return cpfOrCnpj;
     }
 
-    public void setTelefones(List<Address> telefones) {
-        this.telefones = telefones;
+    public void setPhones(List<Address> phones) {
+        this.phones = phones;
     }
 
-    public List<Address> getTelefones() {
-        return telefones;
+    public List<Address> getPhones() {
+        return phones;
     }
     
-    public void setSituacaoCadastral(RegistrationStatus situacaoCadastral) {
-        this.situacaoCadastral = situacaoCadastral;
+    public void setRegistrationStatus(RegistrationStatus registrationStatus) {
+        this.registrationStatus = registrationStatus;
     }
 
-    public RegistrationStatus getSituacaoCadastral() {
-        return situacaoCadastral;
+    public RegistrationStatus getRegistrationStatus() {
+        return registrationStatus;
     }
 
-    public void setTipoCliente(EntityType tipoCliente) {
-        this.tipoCliente = tipoCliente;
+    public void setCustomerType(EntityType customerType) {
+        this.customerType = customerType;
     }
 
-    public EntityType getTipoCliente() {
-        return tipoCliente;
+    public EntityType getCustomerType() {
+        return customerType;
     }
     
     @Override
     public boolean equals(Object obj) {
         if(obj == null || obj.getClass() != this.getClass()) return false;
         
-        final Customer cliente = (Customer) obj;
-        return Objects.equals(id, cliente.id) && Objects.equals(CpfOuCnpj, cliente.CpfOuCnpj);
+        final Customer customer = (Customer) obj;
+        return Objects.equals(id, customer.id) && Objects.equals(cpfOrCnpj, customer.cpfOrCnpj);
     }
     
     @Override

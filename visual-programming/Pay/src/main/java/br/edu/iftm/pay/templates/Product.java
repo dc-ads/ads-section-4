@@ -8,16 +8,16 @@ import java.util.Objects;
  */
 public class Product {
     private Integer id;
-    private String nome;
-    private double valorUnitario;
+    private String name;
+    private double unitPrice;
 
-    public Product(Integer id, String nome, Float valorUnitario) {
+    public Product(Integer id, String name, double unitPrice) {
         this.id = id;
-        this.nome = nome;
-        this.valorUnitario = valorUnitario;
+        this.name = name;
+        this.unitPrice = unitPrice;
     }
 
-    public void setID(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -25,29 +25,29 @@ public class Product {
         return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public double getValorUnitario() {
-        return valorUnitario;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == null || obj.getClass() != this.getClass()) return false;
 
-        final Product produto = (Product) obj;
+        final Product product = (Product) obj;
 
-        return Objects.equals(id, produto.id);
+        return Objects.equals(id, product.id);
     }
 
     @Override

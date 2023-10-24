@@ -8,56 +8,56 @@ import java.util.List;
  * @author dc7devs
  */
 public class Order {
-    private static Integer contadorPedido = 1;
+    private static Integer orderCounter = 1;
     private Integer id;
-    private Date dataPedido;
-    private List<OrderItem> listaDeItem;
-    private Customer cliente;
-    private double valorTotal;
+    private Date orderDate;
+    private List<OrderItem> itemList;
+    private Customer customer;
+    private double totalValue;
     
-    public Order(List<OrderItem> listaDeItem, Customer cliente) {
-        this.id = contadorPedido++;
-        this.dataPedido = new Date();
-        this.listaDeItem = listaDeItem;
-        this.cliente = cliente;
-        calcularValorTotalPedido();
+    public Order(List<OrderItem> itemList, Customer customer) {
+        this.id = orderCounter++;
+        this.orderDate = new Date();
+        this.itemList = itemList;
+        this.customer = customer;
+        calculateTotalOrderValue();
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Date getDataPedido() {
-        return dataPedido;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public double getValorTotal() {
-        return valorTotal;
+    public double getTotalValue() {
+        return totalValue;
     }
     
-    public Customer getCliente() {
-        return cliente;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCliente(Customer cliente) {
-        this.cliente = cliente;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public List<OrderItem> getListaDeItem() {
-        return listaDeItem;
+    public List<OrderItem> getItemList() {
+        return itemList;
     }
 
-    public void setListaDeItem(List<OrderItem> listaDeItem) {
-        this.listaDeItem = listaDeItem;
-        calcularValorTotalPedido();
+    public void setItemList(List<OrderItem> itemList) {
+        this.itemList = itemList;
+        calculateTotalOrderValue();
     }
     
-    public void calcularValorTotalPedido() {
+    public void calculateTotalOrderValue() {
         double total = 0.0;
-        for(OrderItem item : listaDeItem) {
-            total += item.getValorSubTotal();
+        for(OrderItem item : itemList) {
+            total += item.getSubtotalValue();
         }
         
-        valorTotal = total;
+        totalValue = total;
     }
 }

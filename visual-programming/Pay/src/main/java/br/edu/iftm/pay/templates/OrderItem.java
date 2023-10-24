@@ -11,24 +11,24 @@ package br.edu.iftm.pay.templates;
 public class OrderItem {
     private static Long nextId = 1L;
     private Long id;
-    private int quantidade = 1;
-    private double desconto = 0.0;
-    private double valorSubTotal;
-    private Product produto;
+    private int quantity = 1;
+    private double discount = 0.0;
+    private double subtotalValue;
+    private Product product;
 
-    public OrderItem(int quantidade, double desconto, Product produto) {
+    public OrderItem(int quantity, double discount, Product product) {
         this.id = nextId++;
-        this.quantidade = quantidade;
-        this.desconto = desconto;
-        this.produto = produto;
-        recalcularValorSubtotalTotal();
+        this.quantity = quantity;
+        this.discount = discount;
+        this.product = product;
+        recalculateSubtotalValue();
     }
     
-    public OrderItem(int quantidade, Product produto) {
+    public OrderItem(int quantity, Product product) {
         this.id = nextId++;
-        this.quantidade = quantidade;
-        this.produto = produto;
-        recalcularValorSubtotalTotal();
+        this.quantity = quantity;
+        this.product = product;
+        recalculateSubtotalValue();
     }
     
     
@@ -36,39 +36,38 @@ public class OrderItem {
         return id;
     }
     
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-        recalcularValorSubtotalTotal();
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+        recalculateSubtotalValue();
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDesconto(double desconto) {
-        this.desconto = desconto;
-        recalcularValorSubtotalTotal();
+    public void setDiscount(double discount) {
+        this.discount = discount;
+        recalculateSubtotalValue();
     }
 
-    public double getDesconto() {
-        return desconto;
+    public double getDiscount() {
+        return discount;
     }
 
-    public double getValorSubTotal() {
-        return valorSubTotal;
+    public double getSubtotalValue() {
+        return subtotalValue;
     }
 
-    public void setProduto(Product produto) {
-        this.produto = produto;
-        recalcularValorSubtotalTotal();
-        
+    public void setProduct(Product product) {
+        this.product = product;
+        recalculateSubtotalValue();
     }
 
-    public Product getProduto() {
-        return produto;
+    public Product getProduct() {
+        return product;
     }
 
-    private void recalcularValorSubtotalTotal() {
-        valorSubTotal = (produto.getValorUnitario() * quantidade) - desconto;
+    private void recalculateSubtotalValue() {
+        subtotalValue = (product.getUnitPrice() * quantity) - discount;
     }
 }

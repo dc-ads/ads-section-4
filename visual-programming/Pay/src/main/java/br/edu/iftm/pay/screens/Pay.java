@@ -1,11 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package br.edu.iftm.pay.screens;
+
+import javax.swing.JFrame;
 
 /**
  *
- * @author dc7devs
+ * @author IFTM
  */
-public class Pay extends javax.swing.JFrame {
-    NewJInternalFrame tela1 = new NewJInternalFrame();
+public class Pay extends JFrame {
 
     /**
      * Creates new form Pay
@@ -23,83 +28,86 @@ public class Pay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        MainPage = new javax.swing.JDesktopPane();
+        MenuBar = new javax.swing.JMenuBar();
+        ManagmentMenu = new javax.swing.JMenu();
+        CustomerMenu = new javax.swing.JMenuItem();
+        ProductMenu = new javax.swing.JMenuItem();
+        InventoryMenu = new javax.swing.JMenuItem();
+        CustomersMenu = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Testando Solução");
+        setName("frame"); // NOI18N
 
-        jDesktopPane1.setBackground(new java.awt.Color(102, 0, 255));
+        MainPage.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
+        javax.swing.GroupLayout MainPageLayout = new javax.swing.GroupLayout(MainPage);
+        MainPage.setLayout(MainPageLayout);
+        MainPageLayout.setHorizontalGroup(
+            MainPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 798, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+        MainPageLayout.setVerticalGroup(
+            MainPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        ManagmentMenu.setText("Gerenciamento");
 
-        jMenu3.setText("jMenu3");
-
-        jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        CustomerMenu.setText("Clientes");
+        CustomerMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                CustomerMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        ManagmentMenu.add(CustomerMenu);
 
-        jMenu1.add(jMenu3);
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        ProductMenu.setText("Produtos");
+        ProductMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                ProductMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        ManagmentMenu.add(ProductMenu);
 
-        jMenuBar1.add(jMenu1);
+        InventoryMenu.setText("Estoque");
+        InventoryMenu.setToolTipText("");
+        ManagmentMenu.add(InventoryMenu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        MenuBar.add(ManagmentMenu);
+        MenuBar.add(CustomersMenu);
 
-        setJMenuBar(jMenuBar1);
+        jMenu1.setText("outros");
+        MenuBar.add(jMenu1);
+
+        setJMenuBar(MenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MainPage)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(MainPage, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void CustomerMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_CustomerMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        jDesktopPane1.add(tela1);
-        tela1.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void ProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProductMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,18 +139,21 @@ public class Pay extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pay().setVisible(true);
+                Pay frame = new Pay();
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem CustomerMenu;
+    private javax.swing.JMenu CustomersMenu;
+    private javax.swing.JMenuItem InventoryMenu;
+    private javax.swing.JDesktopPane MainPage;
+    private javax.swing.JMenu ManagmentMenu;
+    private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenuItem ProductMenu;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
