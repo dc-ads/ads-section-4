@@ -1,4 +1,4 @@
-package br.edu.iftm.pay.entity;
+package br.edu.iftm.pay.template;
 
 import br.edu.iftm.pay.utils.enumerations.SituacaoCadastral;
 import br.edu.iftm.pay.utils.enumerations.TipoEntidade;

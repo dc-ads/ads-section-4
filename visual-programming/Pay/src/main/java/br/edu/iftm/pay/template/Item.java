@@ -2,26 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.iftm.pay.entity;
+package br.edu.iftm.pay.template;
 
 /**
  *
  * @author dc7devs
  */
 public class Item {
-    private Produto produto;
-    private int quantidade;
+    private Long id;
+    private int quantidade=1;
     private double desconto;
-    private double preco;
+    private double valorSubtotalTotal;
+    private Produto produto;
 
     public Item(
         int quantidade,
         double desconto,
-        double preco
+        double valorSubTotal,
+        Produto produto
     ) {
         this.quantidade = quantidade;
         this.desconto = desconto;
-        this.preco = preco;
+        this.produto = produto;
+        this.valorSubtotalTotal = produto.getValorUnitario() * quantidade;
     }
 
     public void setQuantidade(int quantidade) {
@@ -40,12 +43,8 @@ public class Item {
         return desconto;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public double getPreco() {
-        return preco;
+    public double getValorSubtotalTotal() {
+        return valorSubtotalTotal;
     }
 
     public void setProduto(Produto produto) {

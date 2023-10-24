@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.iftm.pay.entity;
+package br.edu.iftm.pay.template;
 
 /**
  *
@@ -12,12 +12,12 @@ public class Produto {
 
     private Integer ID;
     private String nome;
-    private Float preco;
+    private double valorUnitario;
 
-    public Produto(Integer ID, String nome, Float preco) {
+    public Produto(Integer ID, String nome, Float valorUnitario) {
         this.ID = ID;
         this.nome = nome;
-        this.nome = nome;
+        this.valorUnitario = valorUnitario;
     }
 
     public void setID(Integer ID) {
@@ -36,12 +36,12 @@ public class Produto {
         return nome;
     }
 
-    public void setPreco(Float preco) {
-        this.preco = preco;
+    public void setValorUnitario(double valorUnitario) {
+        this.valorUnitario = valorUnitario;
     }
 
-    public Float getPreco() {
-        return preco;
+    public double getValorUnitario() {
+        return valorUnitario;
     }
 
     @Override
