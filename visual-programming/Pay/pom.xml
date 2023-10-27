@@ -11,4 +11,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <exec.mainClass>br.edu.iftm.pay.Pay</exec.mainClass>
     </properties>
+    
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+        </resources>
+    </build>
 </project>

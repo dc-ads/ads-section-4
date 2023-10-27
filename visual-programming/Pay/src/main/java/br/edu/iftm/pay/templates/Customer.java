@@ -3,7 +3,6 @@ package br.edu.iftm.pay.templates;
 import br.edu.iftm.pay.utils.enumerations.RegistrationStatus;
 import br.edu.iftm.pay.utils.enumerations.EntityType;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,19 +14,24 @@ public class Customer {
     private Integer id;
     private String name;
     private String cpfOrCnpj;
-    private List<Address> phones;
+//    private List<Address> address;
+    private String phoneNumber;
     private EntityType customerType;
     private RegistrationStatus registrationStatus;
     
-    public Customer(Integer id, String name, String cpfOrCnpj, ArrayList<Address> phones, EntityType customerType, RegistrationStatus registrationStatus) {
+    public Customer(String name, String cpfOrCnpj, String phoneNumber, EntityType customerType, RegistrationStatus registrationStatus) {
         this.id = customerCounter++;
         this.name = name;
         this.cpfOrCnpj = cpfOrCnpj;
+        this.phoneNumber = phoneNumber;
         this.registrationStatus = registrationStatus;
         this.customerType = customerType;
-        this.phones = phones;
     }
 
+    public Integer getId() {
+        return id;
+    }
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -44,12 +48,12 @@ public class Customer {
         return cpfOrCnpj;
     }
 
-    public void setPhones(List<Address> phones) {
-        this.phones = phones;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public List<Address> getPhones() {
-        return phones;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
     
     public void setRegistrationStatus(RegistrationStatus registrationStatus) {
