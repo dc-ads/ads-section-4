@@ -15,6 +15,7 @@ public class Order {
     private Customer customer;
     private double totalValue;
     
+    public Order() {}
     public Order(List<OrderItem> itemList, Customer customer) {
         this.id = orderCounter++;
         this.orderDate = new Date();

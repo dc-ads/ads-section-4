@@ -4,6 +4,9 @@
  */
 package br.edu.iftm.pay.views.createscreen;
 
+import br.edu.iftm.pay.templates.Customer;
+import br.edu.iftm.pay.utils.enumerations.EntityType;
+
 /**
  *
  * @author Formato
@@ -33,13 +36,13 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSelectCustomerType = new javax.swing.JComboBox<>();
-        jSelectCustomerRegistrationStatus = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jBtnSave = new javax.swing.JButton();
         jBtnCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setTitle("Cadastro de cliente");
         setMinimumSize(new java.awt.Dimension(90, 50));
 
         jLabel1.setText("Nome");
@@ -50,15 +53,21 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
 
         jSelectCustomerType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FISICA", "JURIDICA" }));
 
-        jSelectCustomerRegistrationStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDENTE", "QUITADO", "CANCELADO" }));
-
         jLabel4.setText("Tipo de Cliente");
 
-        jLabel5.setText("Status de Cadastro");
-
         jBtnSave.setText("Salvar");
+        jBtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSaveActionPerformed(evt);
+            }
+        });
 
         jBtnCancel.setText("Cancelar");
+        jBtnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Cadastro de cliente");
@@ -74,18 +83,6 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jInputCustomerPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSelectCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSelectCustomerRegistrationStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
                                 .addComponent(jInputCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
@@ -93,8 +90,19 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)
                                 .addComponent(jInputCustomerDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jBtnCancel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jInputCustomerPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSelectCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jBtnCancel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                             .addComponent(jBtnSave))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -122,11 +130,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSelectCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSelectCustomerRegistrationStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSelectCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnSave)
@@ -136,6 +140,27 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jBtnCancelActionPerformed
+
+    private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
+        // TODO add your handling code here:
+        
+        String selectedType = jSelectCustomerType.getSelectedItem().toString();
+        EntityType customerType = EntityType.valueOf(selectedType);
+        
+        Customer c = new Customer();
+        
+        c.setName(jInputCustomerName.getText());
+        c.setCpfOrCnpj(jInputCustomerDoc.getText());
+        c.setPhoneNumber(jInputCustomerPhoneNumber.getText());
+        c.setCustomerType(customerType);
+        
+        // adicionar AQUI o elemento na lista
+    }//GEN-LAST:event_jBtnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -148,9 +173,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JComboBox<String> jSelectCustomerRegistrationStatus;
     private javax.swing.JComboBox<String> jSelectCustomerType;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,14 +17,15 @@ public class Customer {
 //    private List<Address> address;
     private String phoneNumber;
     private EntityType customerType;
-    private RegistrationStatus registrationStatus;
     
-    public Customer(String name, String cpfOrCnpj, String phoneNumber, EntityType customerType, RegistrationStatus registrationStatus) {
+    public Customer() {
+        this.id = customerCounter++;
+    }
+    public Customer(String name, String cpfOrCnpj, String phoneNumber, EntityType customerType) {
         this.id = customerCounter++;
         this.name = name;
         this.cpfOrCnpj = cpfOrCnpj;
         this.phoneNumber = phoneNumber;
-        this.registrationStatus = registrationStatus;
         this.customerType = customerType;
     }
 
@@ -56,14 +57,6 @@ public class Customer {
         return phoneNumber;
     }
     
-    public void setRegistrationStatus(RegistrationStatus registrationStatus) {
-        this.registrationStatus = registrationStatus;
-    }
-
-    public RegistrationStatus getRegistrationStatus() {
-        return registrationStatus;
-    }
-
     public void setCustomerType(EntityType customerType) {
         this.customerType = customerType;
     }

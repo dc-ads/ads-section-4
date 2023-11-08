@@ -4,6 +4,10 @@
  */
 package br.edu.iftm.pay.views;
 
+import br.edu.iftm.pay.models.CustomerTableModel;
+import br.edu.iftm.pay.models.ProductTableModel;
+import br.edu.iftm.pay.views.createscreen.CreateCustomerInternalFrame;
+import br.edu.iftm.pay.views.createscreen.CreateProductInternalFrame;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 
@@ -12,12 +16,23 @@ import javax.swing.JFrame;
  * @author IFTM
  */
 public class Pay extends JFrame {
-
+    
+    // create screens
+    public CreateCustomerInternalFrame createCustomer = new CreateCustomerInternalFrame();
+    public CreateProductInternalFrame createProduct = new CreateProductInternalFrame();
+    
+    // table model
+    public static CustomerTableModel customerTableModel = new CustomerTableModel();
+    public static ProductTableModel productTableModel = new ProductTableModel();
+    
     /**
      * Creates new form Pay
      */
     public Pay() {
         initComponents();
+        
+        jTableCustomer.setModel(customerTableModel);
+        jTableProduct.setModel(productTableModel);
     }
 
     /**
@@ -29,23 +44,34 @@ public class Pay extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScreen = new javax.swing.JDesktopPane();
         jContainerScreens = new javax.swing.JPanel();
+        jRegisterScreen = new javax.swing.JPanel();
+        jScreen = new javax.swing.JDesktopPane();
         jOrderRegisterScreen = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableOrder = new javax.swing.JTable();
         jCustomerRegisterScreen = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableCustomer = new javax.swing.JTable();
         jProductRegisterScreen = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableProduct = new javax.swing.JTable();
         jPymentRegisterScreen = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTablePayment = new javax.swing.JTable();
         jInventoryRegisterScreen = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableInventory = new javax.swing.JTable();
         jMenuBar = new javax.swing.JMenuBar();
         jRegistersMenu = new javax.swing.JMenu();
         jOrderMenuItem = new javax.swing.JMenuItem();
@@ -71,18 +97,31 @@ public class Pay extends JFrame {
         setName("frame"); // NOI18N
         setResizable(false);
 
+        jContainerScreens.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout jScreenLayout = new javax.swing.GroupLayout(jScreen);
         jScreen.setLayout(jScreenLayout);
         jScreenLayout.setHorizontalGroup(
             jScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+            .addGap(0, 970, Short.MAX_VALUE)
         );
         jScreenLayout.setVerticalGroup(
             jScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 513, Short.MAX_VALUE)
         );
 
-        jContainerScreens.setLayout(new java.awt.CardLayout());
+        javax.swing.GroupLayout jRegisterScreenLayout = new javax.swing.GroupLayout(jRegisterScreen);
+        jRegisterScreen.setLayout(jRegisterScreenLayout);
+        jRegisterScreenLayout.setHorizontalGroup(
+            jRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScreen)
+        );
+        jRegisterScreenLayout.setVerticalGroup(
+            jRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScreen, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        jContainerScreens.add(jRegisterScreen, "RegisterScreen");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/pedido-icone.png"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(40, 40));
@@ -90,16 +129,32 @@ public class Pay extends JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel1.setText("Registro de pedidos:");
 
+        jTableOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTableOrder);
+
         javax.swing.GroupLayout jOrderRegisterScreenLayout = new javax.swing.GroupLayout(jOrderRegisterScreen);
         jOrderRegisterScreen.setLayout(jOrderRegisterScreenLayout);
         jOrderRegisterScreenLayout.setHorizontalGroup(
             jOrderRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOrderRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGroup(jOrderRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jOrderRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jOrderRegisterScreenLayout.setVerticalGroup(
             jOrderRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +163,9 @@ public class Pay extends JFrame {
                 .addGroup(jOrderRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jOrderRegisterScreen, "OrderRegisterScreen");
@@ -119,16 +176,32 @@ public class Pay extends JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel4.setText("Todo os clientes:");
 
+        jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTableCustomer);
+
         javax.swing.GroupLayout jCustomerRegisterScreenLayout = new javax.swing.GroupLayout(jCustomerRegisterScreen);
         jCustomerRegisterScreen.setLayout(jCustomerRegisterScreenLayout);
         jCustomerRegisterScreenLayout.setHorizontalGroup(
             jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jCustomerRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addGroup(jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jCustomerRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jCustomerRegisterScreenLayout.setVerticalGroup(
             jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +210,9 @@ public class Pay extends JFrame {
                 .addGroup(jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jCustomerRegisterScreen, "CustomerRegisterScreen");
@@ -148,16 +223,32 @@ public class Pay extends JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel6.setText("Registro de produtos:");
 
+        jTableProduct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTableProduct);
+
         javax.swing.GroupLayout jProductRegisterScreenLayout = new javax.swing.GroupLayout(jProductRegisterScreen);
         jProductRegisterScreen.setLayout(jProductRegisterScreenLayout);
         jProductRegisterScreenLayout.setHorizontalGroup(
             jProductRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jProductRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addGroup(jProductRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jProductRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jProductRegisterScreenLayout.setVerticalGroup(
             jProductRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +257,9 @@ public class Pay extends JFrame {
                 .addGroup(jProductRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jProductRegisterScreen, "ProductRegisterScreen");
@@ -177,16 +270,32 @@ public class Pay extends JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel8.setText("Regitro de pagamentos:");
 
+        jTablePayment.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTablePayment);
+
         javax.swing.GroupLayout jPymentRegisterScreenLayout = new javax.swing.GroupLayout(jPymentRegisterScreen);
         jPymentRegisterScreen.setLayout(jPymentRegisterScreenLayout);
         jPymentRegisterScreenLayout.setHorizontalGroup(
             jPymentRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPymentRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addGroup(jPymentRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPymentRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPymentRegisterScreenLayout.setVerticalGroup(
             jPymentRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +304,9 @@ public class Pay extends JFrame {
                 .addGroup(jPymentRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jPymentRegisterScreen, "PymentRegisterScreen");
@@ -206,16 +317,32 @@ public class Pay extends JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel10.setText("Reistro de estoques:");
 
+        jTableInventory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableInventory);
+
         javax.swing.GroupLayout jInventoryRegisterScreenLayout = new javax.swing.GroupLayout(jInventoryRegisterScreen);
         jInventoryRegisterScreen.setLayout(jInventoryRegisterScreenLayout);
         jInventoryRegisterScreenLayout.setHorizontalGroup(
             jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInventoryRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGroup(jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jInventoryRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jInventoryRegisterScreenLayout.setVerticalGroup(
             jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +351,9 @@ public class Pay extends JFrame {
                 .addGroup(jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jInventoryRegisterScreen, "InventoryRegisterScreen");
@@ -284,6 +413,11 @@ public class Pay extends JFrame {
 
         jCustomerRegisterMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png"))); // NOI18N
         jCustomerRegisterMenuItem.setText("Cadastrar");
+        jCustomerRegisterMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCustomerRegisterMenuItemActionPerformed(evt);
+            }
+        });
         jCustomerMenu.add(jCustomerRegisterMenuItem);
 
         jCustomerUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/changes.png"))); // NOI18N
@@ -301,6 +435,11 @@ public class Pay extends JFrame {
 
         jProductRegisterMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png"))); // NOI18N
         jProductRegisterMenuItem.setText("Cadastrar");
+        jProductRegisterMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jProductRegisterMenuItemActionPerformed(evt);
+            }
+        });
         jProductMenu.add(jProductRegisterMenuItem);
 
         jProductUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/changes.png"))); // NOI18N
@@ -337,14 +476,10 @@ public class Pay extends JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jContainerScreens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScreen))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jContainerScreens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScreen))
         );
 
         pack();
@@ -380,6 +515,24 @@ public class Pay extends JFrame {
         dl.show(jContainerScreens, "InventoryRegisterScreen");
     }//GEN-LAST:event_jInventoryMenuItemActionPerformed
 
+    private void jCustomerRegisterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCustomerRegisterMenuItemActionPerformed
+        // TODO add your handling code here:
+        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
+        dl.show(jContainerScreens, "RegisterScreen");
+        
+        jScreen.add(createCustomer);
+        createCustomer.setVisible(true);
+    }//GEN-LAST:event_jCustomerRegisterMenuItemActionPerformed
+
+    private void jProductRegisterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductRegisterMenuItemActionPerformed
+        // TODO add your handling code here:
+        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
+        dl.show(jContainerScreens, "RegisterScreen");
+        
+        jScreen.add(createProduct);
+        createProduct.setVisible(true);
+    }//GEN-LAST:event_jProductRegisterMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,7 +564,7 @@ public class Pay extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Pay frame = new Pay();
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 frame.setVisible(true);
             }
         });
@@ -452,7 +605,18 @@ public class Pay extends JFrame {
     private javax.swing.JMenuItem jProductRemoveMenuItem;
     private javax.swing.JMenuItem jProductUpdateMenuItem;
     private javax.swing.JPanel jPymentRegisterScreen;
+    private javax.swing.JPanel jRegisterScreen;
     private javax.swing.JMenu jRegistersMenu;
     private javax.swing.JDesktopPane jScreen;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTableCustomer;
+    private javax.swing.JTable jTableInventory;
+    private javax.swing.JTable jTableOrder;
+    private javax.swing.JTable jTablePayment;
+    private javax.swing.JTable jTableProduct;
     // End of variables declaration//GEN-END:variables
 }

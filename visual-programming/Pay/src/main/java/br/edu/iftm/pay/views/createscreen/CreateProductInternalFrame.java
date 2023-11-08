@@ -37,6 +37,8 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jInputProductUnitPrice = new javax.swing.JTextField();
 
+        setClosable(true);
+        setTitle("Cadastro de produto");
         setPreferredSize(new java.awt.Dimension(564, 336));
 
         jBtnSave.setText("Salvar");

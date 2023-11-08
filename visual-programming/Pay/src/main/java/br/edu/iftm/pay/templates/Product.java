@@ -13,6 +13,7 @@ public class Product {
     private double unitPrice;
     private String description;
 
+    public Product() {}
     public Product(String name, double unitPrice, String description) {
         this.id = productCounter++;
         this.name = name;
