@@ -10,18 +10,17 @@ public class Product {
     private static Integer productCounter = 1;
     private Integer id;
     private String name;
-    private double unitPrice;
+    private float unitPrice;
     private String description;
 
-    public Product() {}
-    public Product(String name, double unitPrice, String description) {
+    public Product(String name, float unitPrice, String description) {
         this.id = productCounter++;
         this.name = name;
         this.unitPrice = unitPrice;
         this.description = description;
     }
     
-    public Product(String name, double unitPrice) {
+    public Product(String name, float unitPrice) {
         this.id = productCounter++;
         this.name = name;
         this.unitPrice = unitPrice;
@@ -43,7 +42,7 @@ public class Product {
         return name;
     }
 
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
     }
 

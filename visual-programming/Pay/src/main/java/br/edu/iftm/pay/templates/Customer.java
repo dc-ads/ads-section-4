@@ -1,8 +1,6 @@
 package br.edu.iftm.pay.templates;
 
-import br.edu.iftm.pay.utils.enumerations.RegistrationStatus;
 import br.edu.iftm.pay.utils.enumerations.EntityType;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -18,9 +16,6 @@ public class Customer {
     private String phoneNumber;
     private EntityType customerType;
     
-    public Customer() {
-        this.id = customerCounter++;
-    }
     public Customer(String name, String cpfOrCnpj, String phoneNumber, EntityType customerType) {
         this.id = customerCounter++;
         this.name = name;

@@ -5,11 +5,16 @@
 package br.edu.iftm.pay.views;
 
 import br.edu.iftm.pay.models.CustomerTableModel;
+import br.edu.iftm.pay.models.OrderTableModel;
 import br.edu.iftm.pay.models.ProductTableModel;
 import br.edu.iftm.pay.views.createscreen.CreateCustomerInternalFrame;
+import br.edu.iftm.pay.views.createscreen.CreateOrderInternalFrame;
 import br.edu.iftm.pay.views.createscreen.CreateProductInternalFrame;
+import br.edu.iftm.pay.views.updatescreen.UpdateCustomerInternalFrame;
+import br.edu.iftm.pay.views.updatescreen.UpdateProductInternalFrame;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +22,21 @@ import javax.swing.JFrame;
  */
 public class Pay extends JFrame {
     
+    public static CardLayout dlCardLayout;
+    
     // create screens
     public CreateCustomerInternalFrame createCustomer = new CreateCustomerInternalFrame();
     public CreateProductInternalFrame createProduct = new CreateProductInternalFrame();
+    public CreateOrderInternalFrame createOrder = new CreateOrderInternalFrame();
+    
+    // update screens
+    public UpdateProductInternalFrame updateProduct;
+    public UpdateCustomerInternalFrame updateCustomer;
     
     // table model
     public static CustomerTableModel customerTableModel = new CustomerTableModel();
     public static ProductTableModel productTableModel = new ProductTableModel();
+    public static OrderTableModel orderTableModel = new OrderTableModel();
     
     /**
      * Creates new form Pay
@@ -33,6 +46,9 @@ public class Pay extends JFrame {
         
         jTableCustomer.setModel(customerTableModel);
         jTableProduct.setModel(productTableModel);
+        jTableOrder.setModel(orderTableModel);
+        
+        dlCardLayout = (CardLayout) jContainerScreens.getLayout();
     }
 
     /**
@@ -72,6 +88,8 @@ public class Pay extends JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableInventory = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableProductsByleInventory = new javax.swing.JTable();
         jMenuBar = new javax.swing.JMenuBar();
         jRegistersMenu = new javax.swing.JMenu();
         jOrderMenuItem = new javax.swing.JMenuItem();
@@ -103,7 +121,7 @@ public class Pay extends JFrame {
         jScreen.setLayout(jScreenLayout);
         jScreenLayout.setHorizontalGroup(
             jScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
+            .addGap(0, 1020, Short.MAX_VALUE)
         );
         jScreenLayout.setVerticalGroup(
             jScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +172,7 @@ public class Pay extends JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jOrderRegisterScreenLayout.setVerticalGroup(
             jOrderRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,12 +214,12 @@ public class Pay extends JFrame {
             .addGroup(jCustomerRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jCustomerRegisterScreenLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jCustomerRegisterScreenLayout.setVerticalGroup(
             jCustomerRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +266,7 @@ public class Pay extends JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jProductRegisterScreenLayout.setVerticalGroup(
             jProductRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +313,7 @@ public class Pay extends JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPymentRegisterScreenLayout.setVerticalGroup(
             jPymentRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +333,7 @@ public class Pay extends JFrame {
         jLabel9.setMaximumSize(new java.awt.Dimension(40, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
-        jLabel10.setText("Reistro de estoques:");
+        jLabel10.setText("Reistro de estoque de produtos:");
 
         jTableInventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -330,6 +348,21 @@ public class Pay extends JFrame {
         ));
         jScrollPane1.setViewportView(jTableInventory);
 
+        jTableProductsByleInventory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableProductsByleInventory.setToolTipText("");
+        jTableProductsByleInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane4.setViewportView(jTableProductsByleInventory);
+
         javax.swing.GroupLayout jInventoryRegisterScreenLayout = new javax.swing.GroupLayout(jInventoryRegisterScreen);
         jInventoryRegisterScreen.setLayout(jInventoryRegisterScreenLayout);
         jInventoryRegisterScreenLayout.setHorizontalGroup(
@@ -337,12 +370,15 @@ public class Pay extends JFrame {
             .addGroup(jInventoryRegisterScreenLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jInventoryRegisterScreenLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(jLabel10))
+                    .addGroup(jInventoryRegisterScreenLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jInventoryRegisterScreenLayout.setVerticalGroup(
             jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,9 +387,11 @@ public class Pay extends JFrame {
                 .addGroup(jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addGroup(jInventoryRegisterScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jContainerScreens.add(jInventoryRegisterScreen, "InventoryRegisterScreen");
@@ -426,6 +464,11 @@ public class Pay extends JFrame {
 
         jCustomerRemoveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
         jCustomerRemoveMenuItem.setText("Excluir");
+        jCustomerRemoveMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCustomerRemoveMenuItemActionPerformed(evt);
+            }
+        });
         jCustomerMenu.add(jCustomerRemoveMenuItem);
 
         jMenuBar.add(jCustomerMenu);
@@ -444,10 +487,20 @@ public class Pay extends JFrame {
 
         jProductUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/changes.png"))); // NOI18N
         jProductUpdateMenuItem.setText("Alterar");
+        jProductUpdateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jProductUpdateMenuItemActionPerformed(evt);
+            }
+        });
         jProductMenu.add(jProductUpdateMenuItem);
 
         jProductRemoveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
         jProductRemoveMenuItem.setText("Excluir");
+        jProductRemoveMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jProductRemoveMenuItemActionPerformed(evt);
+            }
+        });
         jProductMenu.add(jProductRemoveMenuItem);
 
         jMenuBar.add(jProductMenu);
@@ -456,7 +509,12 @@ public class Pay extends JFrame {
         jOrderMenu.setText("Pedido");
 
         jOrderRegisterMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png"))); // NOI18N
-        jOrderRegisterMenuItem.setText("Cadastrar");
+        jOrderRegisterMenuItem.setText("Gerar pedido");
+        jOrderRegisterMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOrderRegisterMenuItemActionPerformed(evt);
+            }
+        });
         jOrderMenu.add(jOrderRegisterMenuItem);
 
         jOrderUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/changes.png"))); // NOI18N
@@ -487,38 +545,32 @@ public class Pay extends JFrame {
 
     private void jProductMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "ProductRegisterScreen");
+        dlCardLayout.show(jContainerScreens, "ProductRegisterScreen");
     }//GEN-LAST:event_jProductMenuItemActionPerformed
 
     private void jCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCustomerMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "CustomerRegisterScreen");
+        dlCardLayout.show(jContainerScreens, "CustomerRegisterScreen");
     }//GEN-LAST:event_jCustomerMenuItemActionPerformed
 
     private void jOrderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "OrderRegisterScreen");
+        dlCardLayout.show(jContainerScreens, "OrderRegisterScreen");
     }//GEN-LAST:event_jOrderMenuItemActionPerformed
 
     private void jPaymentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPaymentMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "PymentRegisterScreen");
+        dlCardLayout.show(jContainerScreens, "PymentRegisterScreen");
     }//GEN-LAST:event_jPaymentMenuItemActionPerformed
 
     private void jInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInventoryMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "InventoryRegisterScreen");
+        dlCardLayout.show(jContainerScreens, "InventoryRegisterScreen");
     }//GEN-LAST:event_jInventoryMenuItemActionPerformed
 
     private void jCustomerRegisterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCustomerRegisterMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "RegisterScreen");
+        dlCardLayout.show(jContainerScreens, "RegisterScreen");
         
         jScreen.add(createCustomer);
         createCustomer.setVisible(true);
@@ -526,12 +578,61 @@ public class Pay extends JFrame {
 
     private void jProductRegisterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductRegisterMenuItemActionPerformed
         // TODO add your handling code here:
-        CardLayout dl = (CardLayout) jContainerScreens.getLayout();
-        dl.show(jContainerScreens, "RegisterScreen");
+        dlCardLayout.show(jContainerScreens, "RegisterScreen");
         
         jScreen.add(createProduct);
         createProduct.setVisible(true);
     }//GEN-LAST:event_jProductRegisterMenuItemActionPerformed
+
+    private void jCustomerRemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCustomerRemoveMenuItemActionPerformed
+        // TODO add your handling code here:
+        dlCardLayout.show(jContainerScreens, "CustomerRegisterScreen");
+        
+        int selected = jTableCustomer.getSelectedRow();
+        
+        if(selected != -1) {
+            customerTableModel.removeRow(selected);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada");
+        }
+    }//GEN-LAST:event_jCustomerRemoveMenuItemActionPerformed
+
+    private void jProductRemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductRemoveMenuItemActionPerformed
+        // TODO add your handling code here:
+        int selected = jTableProduct.getSelectedRow();
+        
+        if(selected != -1) {
+            productTableModel.removeRow(selected);
+            dlCardLayout.show(jContainerScreens, "ProductRegisterScreen");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada");
+            dlCardLayout.show(jContainerScreens, "ProductRegisterScreen");
+        }
+    }//GEN-LAST:event_jProductRemoveMenuItemActionPerformed
+
+    private void jProductUpdateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductUpdateMenuItemActionPerformed
+        // TODO add your handling code here:
+        int selected = jTableProduct.getSelectedRow();
+        
+        if(selected != -1) {
+            dlCardLayout.show(jContainerScreens, "RegisterScreen");
+            updateProduct = new UpdateProductInternalFrame(productTableModel.getRow(selected), selected);
+
+            jScreen.add(updateProduct);
+            updateProduct.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada");
+            dlCardLayout.show(jContainerScreens, "ProductRegisterScreen");
+        }
+    }//GEN-LAST:event_jProductUpdateMenuItemActionPerformed
+
+    private void jOrderRegisterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderRegisterMenuItemActionPerformed
+        // TODO add your handling code here:
+        dlCardLayout.show(jContainerScreens, "RegisterScreen");
+        
+        jScreen.add(createOrder);
+        createOrder.setVisible(true);
+    }//GEN-LAST:event_jOrderRegisterMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -571,7 +672,7 @@ public class Pay extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jContainerScreens;
+    public static javax.swing.JPanel jContainerScreens;
     private javax.swing.JMenu jCustomerMenu;
     private javax.swing.JMenuItem jCustomerMenuItem;
     private javax.swing.JMenuItem jCustomerRegisterMenuItem;
@@ -610,13 +711,15 @@ public class Pay extends JFrame {
     private javax.swing.JDesktopPane jScreen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTableCustomer;
-    private javax.swing.JTable jTableInventory;
-    private javax.swing.JTable jTableOrder;
-    private javax.swing.JTable jTablePayment;
-    private javax.swing.JTable jTableProduct;
+    private static javax.swing.JTable jTableCustomer;
+    public static javax.swing.JTable jTableInventory;
+    private static javax.swing.JTable jTableOrder;
+    private static javax.swing.JTable jTablePayment;
+    private static javax.swing.JTable jTableProduct;
+    public static javax.swing.JTable jTableProductsByleInventory;
     // End of variables declaration//GEN-END:variables
 }

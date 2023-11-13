@@ -39,7 +39,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jBtnCancel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jBtnSave" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBtnUpdate" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
               <Component id="jScrollPane1" min="-2" pref="75" max="-2" attributes="0"/>
               <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBtnSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBtnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -96,12 +96,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jBtnSave">
+    <Component class="javax.swing.JButton" name="jBtnUpdate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salvar"/>
+        <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnSaveActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnUpdateActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnCancel">
@@ -119,7 +119,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cadastro de produto"/>
+        <Property name="text" type="java.lang.String" value="Atualizar produto"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

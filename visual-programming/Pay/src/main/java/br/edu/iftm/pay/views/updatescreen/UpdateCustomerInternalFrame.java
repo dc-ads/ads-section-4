@@ -2,24 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package br.edu.iftm.pay.views.createscreen;
+package br.edu.iftm.pay.views.updatescreen;
 
+import br.edu.iftm.pay.views.createscreen.*;
 import br.edu.iftm.pay.templates.Customer;
 import br.edu.iftm.pay.utils.enumerations.EntityType;
 import br.edu.iftm.pay.views.Pay;
+import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 
 /**
  *
  * @author Formato
  */
-public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
+public class UpdateCustomerInternalFrame extends javax.swing.JInternalFrame {
+    private int selectedRow;
 
     /**
      * Creates new form CreateCustomerInternalFrame
      */
-    public CreateCustomerInternalFrame() {
+    public UpdateCustomerInternalFrame() {
         initComponents();
+    }
+    
+    public UpdateCustomerInternalFrame(Customer customer, int selected) {
+        initComponents();
+        
+        Customer uCustomer = (Customer) customer;
+        
+        jInputCustomerName.setText(uCustomer.getName());
+        jInputCustomerDoc.setText(uCustomer.getCpfOrCnpj());
+        jInputCustomerPhoneNumber.setText(uCustomer.getPhoneNumber());
+        jSelectCustomerType.setSelectedItem(uCustomer.getCustomerType().toString());
+        
+        this.selectedRow = selected;
     }
     
     private void clearInputFields(JTextComponent... fields) {
@@ -45,7 +61,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jSelectCustomerType = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jBtnSave = new javax.swing.JButton();
+        jBtnUpdate = new javax.swing.JButton();
         jBtnCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -63,10 +79,10 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tipo de Cliente");
 
-        jBtnSave.setText("Salvar");
-        jBtnSave.addActionListener(new java.awt.event.ActionListener() {
+        jBtnUpdate.setText("Atualizar");
+        jBtnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnSaveActionPerformed(evt);
+                jBtnUpdateActionPerformed(evt);
             }
         });
 
@@ -78,7 +94,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Cadastro de cliente");
+        jLabel6.setText("Atualizar cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +127,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jBtnCancel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                            .addComponent(jBtnSave))))
+                            .addComponent(jBtnUpdate))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,7 +157,7 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jSelectCustomerType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnSave)
+                    .addComponent(jBtnUpdate)
                     .addComponent(jBtnCancel))
                 .addGap(30, 30, 30))
         );
@@ -151,34 +167,29 @@ public class CreateCustomerInternalFrame extends javax.swing.JInternalFrame {
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
         // TODO add your handling code here:
-        clearInputFields(jInputCustomerName, jInputCustomerDoc, jInputCustomerPhoneNumber);
         Pay.dlCardLayout.show(Pay.jContainerScreens, "CustomerRegisterScreen");
+        clearInputFields(jInputCustomerName, jInputCustomerDoc, jInputCustomerPhoneNumber);
+        
         this.dispose();
     }//GEN-LAST:event_jBtnCancelActionPerformed
 
-    private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
+    private void jBtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUpdateActionPerformed
         // TODO add your handling code here:
         
-        String selectedType = jSelectCustomerType.getSelectedItem().toString();
-        EntityType customerType = EntityType.valueOf(selectedType);
-        
-        Customer c = new Customer(
-            jInputCustomerName.getText(),
-            jInputCustomerDoc.getText(),
-            jInputCustomerPhoneNumber.getText(),
-            customerType
-        );
-        
-        Pay.customerTableModel.addRow(c);
-        
+        Pay.customerTableModel.setValueAt(jInputCustomerName.getText(), selectedRow, 1);
+        Pay.customerTableModel.setValueAt(jInputCustomerDoc.getText(), selectedRow, 2);
+        Pay.customerTableModel.setValueAt(jInputCustomerPhoneNumber.getText(), selectedRow, 3);
+        Pay.customerTableModel.setValueAt(jSelectCustomerType.getSelectedItem().toString(), selectedRow, 4);
+
         clearInputFields(jInputCustomerName, jInputCustomerDoc, jInputCustomerPhoneNumber);
+
         Pay.dlCardLayout.show(Pay.jContainerScreens, "CustomerRegisterScreen");
         this.dispose();
-    }//GEN-LAST:event_jBtnSaveActionPerformed
+    }//GEN-LAST:event_jBtnUpdateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancel;
-    private javax.swing.JButton jBtnSave;
+    private javax.swing.JButton jBtnUpdate;
     private javax.swing.JTextField jInputCustomerDoc;
     private javax.swing.JTextField jInputCustomerName;
     private javax.swing.JTextField jInputCustomerPhoneNumber;

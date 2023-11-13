@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import br.edu.iftm.pay.templates.Customer;
+import br.edu.iftm.pay.utils.enumerations.EntityType;
 import java.util.List;
 
 /**
@@ -52,7 +53,37 @@ public class CustomerTableModel extends AbstractTableModel {
         return null;
     }
     
+    @Override
+    public void setValueAt(Object valor, int rowIndex, int columnIndex) {
+        switch(columnIndex) {
+            case 1:
+                dados.get(rowIndex).setName((String) valor);
+                break;
+            case 2:
+                dados.get(rowIndex).setCpfOrCnpj((String) valor);
+                break;
+            case 3:
+                dados.get(rowIndex).setPhoneNumber((String) valor);
+                break;
+            case 4:
+                dados.get(rowIndex).setCustomerType(EntityType.valueOf((String) valor));
+                break;
+        }
+        
+        this.fireTableRowsUpdated(rowIndex, rowIndex);
+    }
+    
     public void addRow(Customer newCliente) {
-        this.dados.add(newCliente);
+        dados.add(newCliente);
+        this.fireTableDataChanged();
+    }
+    
+    public Customer getRow(int rowIndex) {
+        return dados.get(rowIndex);
+    }
+    
+    public void removeRow(int rowIndex) {
+        this.dados.remove(rowIndex);
+        this.fireTableRowsDeleted(rowIndex, rowIndex);
     }
 }

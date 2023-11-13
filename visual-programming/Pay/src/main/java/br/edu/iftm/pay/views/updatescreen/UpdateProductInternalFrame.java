@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package br.edu.iftm.pay.views.createscreen;
+package br.edu.iftm.pay.views.updatescreen;
 
 import br.edu.iftm.pay.templates.Product;
 import br.edu.iftm.pay.views.Pay;
@@ -12,13 +12,26 @@ import javax.swing.text.JTextComponent;
  *
  * @author Formato
  */
-public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
+public class UpdateProductInternalFrame extends javax.swing.JInternalFrame {
+    private int selectedRow;
 
     /**
      * Creates new form CreateProductInternalFrame
      */
-    public CreateProductInternalFrame() {
+    public UpdateProductInternalFrame() {
         initComponents();
+    }
+    
+    public UpdateProductInternalFrame(Product product, int selected) {
+        initComponents();
+        
+        Product uProduct = (Product) product;
+        
+        jInputProductName.setText(uProduct.getName());
+        jInputProductUnitPrice.setText(Double.toString(uProduct.getUnitPrice()));
+        jTextProductDescription.setText(uProduct.getDescription());
+        
+        this.selectedRow = selected;
     }
     
     private void clearInputFields(JTextComponent... fields) {
@@ -36,7 +49,7 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnSave = new javax.swing.JButton();
+        jBtnUpdate = new javax.swing.JButton();
         jBtnCancel = new javax.swing.JButton();
         jInputProductName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -51,10 +64,10 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
         setTitle("Cadastro de produto");
         setPreferredSize(new java.awt.Dimension(564, 336));
 
-        jBtnSave.setText("Salvar");
-        jBtnSave.addActionListener(new java.awt.event.ActionListener() {
+        jBtnUpdate.setText("Atualizar");
+        jBtnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnSaveActionPerformed(evt);
+                jBtnUpdateActionPerformed(evt);
             }
         });
 
@@ -66,7 +79,7 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Cadastro de produto");
+        jLabel6.setText("Atualizar produto");
 
         jLabel1.setText("Nome");
 
@@ -94,7 +107,7 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnCancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBtnSave)))
+                                .addComponent(jBtnUpdate)))
                         .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -129,7 +142,7 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnSave)
+                    .addComponent(jBtnUpdate)
                     .addComponent(jBtnCancel))
                 .addGap(30, 30, 30))
         );
@@ -139,31 +152,29 @@ public class CreateProductInternalFrame extends javax.swing.JInternalFrame {
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
         // TODO add your handling code here:
-        clearInputFields(jInputProductName, jInputProductUnitPrice, jTextProductDescription);
-        this.dispose();
         Pay.dlCardLayout.show(Pay.jContainerScreens, "ProductRegisterScreen");
+        clearInputFields(jInputProductName, jInputProductUnitPrice, jTextProductDescription);
+        
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelActionPerformed
 
-    private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
+    private void jBtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUpdateActionPerformed
         // TODO add your handling code here:
         
-        Product p = new Product(
-            jInputProductName.getText(),
-            Float.parseFloat(jInputProductUnitPrice.getText()),
-            jTextProductDescription.getText()
-        );
-        
-        Pay.productTableModel.addRow(p);
+        Pay.productTableModel.setValueAt(jInputProductName.getText(), selectedRow,  1);
+        Pay.productTableModel.setValueAt(jInputProductUnitPrice.getText(), selectedRow,  2);
+        Pay.productTableModel.setValueAt(jTextProductDescription.getText(), selectedRow,  3);
         
         clearInputFields(jInputProductName, jInputProductUnitPrice, jTextProductDescription);
+        
         Pay.dlCardLayout.show(Pay.jContainerScreens, "ProductRegisterScreen");
         this.dispose();
-    }//GEN-LAST:event_jBtnSaveActionPerformed
+    }//GEN-LAST:event_jBtnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancel;
-    private javax.swing.JButton jBtnSave;
+    private javax.swing.JButton jBtnUpdate;
     private javax.swing.JTextField jInputProductName;
     private javax.swing.JTextField jInputProductUnitPrice;
     private javax.swing.JLabel jLabel1;

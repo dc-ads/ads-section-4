@@ -4,21 +4,20 @@
  */
 package br.edu.iftm.pay.models;
 
-import java.util.ArrayList;
-import javax.swing.table.AbstractTableModel;
+import br.edu.iftm.pay.templates.Order;
 
-import br.edu.iftm.pay.templates.Product;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author dc7devs
+ * @author Formato
  */
-public class ProductTableModel extends AbstractTableModel {
+public class OrderTableModel extends AbstractTableModel {
+    private List<Order> dados = new ArrayList<>();
+    final private String[] colunas = { "ID", "Data", "Preço", "Cliente", "Itens",  "Valor Total" };
     
-    private List<Product> dados = new ArrayList<>();
-    final private String[] colunas = { "ID", "Nome", "Preço", "Descrição" };
-
     @Override
     public String getColumnName(int columnIndex) {
         return colunas[columnIndex];
@@ -33,46 +32,33 @@ public class ProductTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return colunas.length;
     }
-
+    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex) {
             case 0:
-                return dados.get(rowIndex).getId();
+                return null;
             case 1:
-                return dados.get(rowIndex).getName();
+                return null;
             case 2:
-                return dados.get(rowIndex).getUnitPrice();
-            case 3:
-                return dados.get(rowIndex).getDescription();
+                return null;
         }
         
-        return null;
+        return new Object();
     }
     
     @Override
     public void setValueAt(Object valor, int rowIndex, int columnIndex) {
         switch(columnIndex) {
-            case 1:
-                dados.get(rowIndex).setName((String) valor);
-                break;
-            case 2:
-                dados.get(rowIndex).setUnitPrice(Float.parseFloat((String) valor));
-                break;
-            case 3:
-                dados.get(rowIndex).setDescription((String) valor);
-                break;
         }
-        
-        this.fireTableRowsUpdated(rowIndex, rowIndex);
     }
     
-    public void addRow(Product newProduct) {
-        dados.add(newProduct);
+    public void addRow(Order newOrder) {
+        dados.add(newOrder);
         this.fireTableDataChanged();
     }
     
-    public Product getRow(int rowIndex) {
+    public Order getRow(int rowIndex) {
         return dados.get(rowIndex);
     }
     
